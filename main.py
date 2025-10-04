@@ -15,7 +15,7 @@ SPOTIPY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
 SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
 
 TSV_FILE_PATH = 'unclaimedmusicalworkrightshares.tsv'
-CACHE_FILE_PATH = 'isrc_cache.pkl'  # Path for our new cache file
+CACHE_FILE_PATH = 'isrc_cache.pkl'
 OUTPUT_XLSX_PATH = 'tritone_task_output.xlsx'
 ARTIST_URI = 'spotify:artist:06HL4z0CvFAxyc27GXpf02' 
 
@@ -60,9 +60,8 @@ def load_or_create_isrc_set(tsv_path, cache_path):
         print(f"An error occurred while processing the TSV file: {e}")
         return None
 
-# The get_artist_catalog_fast function remains the same...
+
 def get_artist_catalog_fast(artist_uri):
-    # (This function is unchanged from the previous version)
     print(f"Connecting to Spotify and retrieving catalog for artist {artist_uri}...")
     try:
         auth_manager = SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
@@ -110,7 +109,6 @@ def main():
     if artist_catalog_df is None:
         return
         
-    # (The rest of the script remains the same)
     artist_catalog_df.dropna(subset=['isrc'], inplace=True)
     artist_catalog_df.reset_index(drop=True, inplace=True)
 
