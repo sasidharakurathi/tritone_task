@@ -1,0 +1,4 @@
+pandas
+spotipy
+openpyxl
+python-dotenv
